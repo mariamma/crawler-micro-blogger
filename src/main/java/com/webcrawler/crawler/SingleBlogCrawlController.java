@@ -30,8 +30,8 @@ public class SingleBlogCrawlController {
                  * which are found in these pages
                  */
                // controller.addSeed("http://blog.vogella.com/");
-               // controller.addSeed("http://www.mkyong.com/");
-                controller.addSeed("http://www.forbes.com/sites/timworstall/2014/07/17/the-secret-to-why-yahoos-share-price-doesnt-reflect-the-value-of-the-alibaba-stake/");
+                controller.addSeed("http://www.mkyong.com/");
+                //controller.addSeed("http://www.forbes.com/sites/timworstall/2014/07/17/the-secret-to-why-yahoos-share-price-doesnt-reflect-the-value-of-the-alibaba-stake/");
 
                 /*
                  * Start the crawl. This is a blocking operation, meaning that your code

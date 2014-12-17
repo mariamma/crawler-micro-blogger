@@ -28,6 +28,13 @@ public class StopWordRemovalAndStemming {
 	    stopWords.add("our");
 	    stopWords.add("with");
 	    stopWords.add("are");
+	    stopWords.add("it");
+	    stopWords.add("for");
+	    stopWords.add("to");
+	    stopWords.add("be");
+	    stopWords.add("this");
+	    stopWords.add("how");
+	    stopWords.add("by");
 	    stopWords.add("div");
 	    stopWords.add("class");
 	    stopWords.add("span");
@@ -36,6 +43,7 @@ public class StopWordRemovalAndStemming {
 	    stopWords.add("http");
 	    stopWords.add("rel");
 	    stopWords.add("li");
+	    stopWords.add("br");
 	    stopWords.add("p");
 	    stopWords.add("h2");
 	    stopWords.add("h6");
@@ -43,6 +51,7 @@ public class StopWordRemovalAndStemming {
 	    stopWords.add("property");
 	    stopWords.add("article");
 	    stopWords.add("content");
+	    stopWords.add("data");
 	    stopWords.add("amp");
 	    
 	    

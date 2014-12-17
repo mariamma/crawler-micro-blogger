@@ -1,6 +1,7 @@
 package com.tags.extract;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,30 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.wepage.info.WebPageInfo;
+
 public class IdentifyTagLines {
 
 	private Document document;
+	WebPageInfo webPageInfo;
+	private String url;
 	int MAX_SIZE = 20;
+	
+	public Document getDocument() {
+		return document;
+	}
+
+	public void setDocument(Document document) {
+		this.document = document;
+	}
+
+	public WebPageInfo getWebPageInfo() {
+		return webPageInfo;
+	}
+
+	public void setWebPageInfo(WebPageInfo webPageInfo) {
+		this.webPageInfo = webPageInfo;
+	}
 
 	public void setDoc(Document doc) {
 		document = doc;
@@ -21,11 +42,16 @@ public class IdentifyTagLines {
 		return document;
 	}
 
-	public void setTagToDoc() {
-
+	public void setUrl(String url2) {
+		this.url = url2;
 	}
 
-	public void process() throws IOException {
+	public String getUrl() {
+		return url;
+	}
+	
+
+	public WebPageInfo process() throws IOException {
 		List<String> blocks = identifyNeighbourBlocks();
 		List<String> tagLines = new ArrayList<String>();
 		for (String str : blocks) {
@@ -34,14 +60,14 @@ public class IdentifyTagLines {
 			try {
 				String newStr = stopRemove.process(str);
 				System.out.println("After removing stop words:: " + newStr);
+				tagLines.add(newStr);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		TagsFromLines tags = new TagsFromLines();
-		tags.setLine(str);
-		tags.extractTags();
-
+		webPageInfo = tags.extractTags(webPageInfo, tagLines);
+		return webPageInfo;
 	}
 
 	private List<String> identifyNeighbourBlocks() {
@@ -74,7 +100,7 @@ public class IdentifyTagLines {
 
 	public Element removeAnchorTags(Element src) {
 		Elements anchTags = src.select("a");
-		anchTags.remove();
+		//anchTags.remove();
 		return src;
 	}
 

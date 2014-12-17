@@ -1,5 +1,7 @@
 package com.data.access;
 
+import java.util.List;
+
 import redis.clients.jedis.Jedis;
 
 import com.wepage.info.WebPageInfo;
@@ -20,7 +22,10 @@ public class CallerDAOImpl implements CallerDAO {
 	public void write(WebPageInfo info) {
 		if (jedis == null) 
 				getConnection();
-		jedis.set(info.getUrl(),info.getTags());
+		List<String> tags = info.getTags();
+		for(String t:tags){
+			jedis.append(t, " " +info.getUrl());
+		}
 	}
 
 }
