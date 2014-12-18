@@ -10,6 +10,7 @@ public class CallerDAOImpl implements CallerDAO {
 
 	Jedis jedis = null;
 
+	// TODO : Move to a configuration
 	private void getConnection() {
 		jedis = new Jedis("localhost");
 	}
@@ -26,6 +27,7 @@ public class CallerDAOImpl implements CallerDAO {
 		for(String t:tags){
 			jedis.append(t, " " +info.getUrl());
 		}
+		removeConnection();
 	}
 
 }
