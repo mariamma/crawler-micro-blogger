@@ -4,5 +4,5 @@ import com.wepage.info.WebPageInfo;
 
 public interface CallerDAO {
 
-	public void write(WebPageInfo info);
+    public void write(WebPageInfo info);
 }
